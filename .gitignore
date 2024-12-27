@@ -1,5 +1,5 @@
 node_modules
 build
 postgres_data
-
+coverage
 .env

@@ -2,13 +2,13 @@
 	"name": "03-solid-api",
 	"version": "1.0.0",
 	"main": "index.js",
-
 	"scripts": {
 		"dev": "tsx watch --env-file=.env src/server.ts",
 		"start": "node --env-file=.env build/server.js",
 		"build": "tsup src --out-dir build",
 		"test": "vitest run",
-		"test:watch": "vitest"
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage"
 	},
 	"keywords": [],
 	"author": "",
@@ -17,6 +17,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@types/node": "22.10.2",
+		"@vitest/coverage-v8": "2.1.8",
 		"prisma": "6.1.0",
 		"tsup": "8.3.5",
 		"tsx": "4.19.2",
