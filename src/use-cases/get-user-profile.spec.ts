@@ -27,7 +27,7 @@ describe('get user profile use case', () => {
         expect(user.name).toEqual(createdUser.name)
     })
 
-    it('should be able to return a user profile', async () => {
+    it('should not be able to return a user profile with invalid user id', async () => {
         await expect(() =>
             sut.execute({
                 userId: 'non-existed-user-id',
