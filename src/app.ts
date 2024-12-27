@@ -16,6 +16,8 @@ app.setErrorHandler((error, request, reply) => {
 
 	if (env.NODE_ENV !== 'prod') {
 		console.error(error);
+	} else {
+		// TODO: tratar para uma ferramenta de logs externa
 	}
 	return reply.status(500).send({ message: 'Internal server error' });
 });
