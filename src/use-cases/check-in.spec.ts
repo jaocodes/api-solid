@@ -2,7 +2,6 @@ import { expect, describe, it, beforeEach, vi, afterEach } from 'vitest'
 import { CheckInUseCase } from './check-in'
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory/in-memory-check-ins-repository'
 import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
-import { Decimal } from '@prisma/client/runtime/library'
 import { MaxDistanceError } from './erros/max-distance-error'
 import { MaxNumberOfCheckInsError } from './erros/max-number-of-check-in-error'
 
@@ -88,12 +87,12 @@ describe('check-in use case', () => {
     })
 
     it('should not be able to check in at a gym that is too far away', async () => {
-        gymsRepository.items.push({
+        await gymsRepository.create({
             id: 'gym-id-2',
             title: 'Js GYM',
             description: 'Academia dos devs',
-            latitude: new Decimal(-1.2989978),
-            longitude: new Decimal(-47.8943014),
+            latitude: -1.2989978,
+            longitude: -47.8943014,
             phone: '',
         })
 
