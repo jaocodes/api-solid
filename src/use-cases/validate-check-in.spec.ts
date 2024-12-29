@@ -36,7 +36,7 @@ describe('validate check-in use case', () => {
     })
 
     it('should not be able to validate an unexistent check-in', async () => {
-        expect(() =>
+        await expect(() =>
             sut.execute({
                 checkInId: 'inexistent-check-in-id',
             }),
