@@ -7,7 +7,6 @@ const envSchema = z.object({
     DATABASE_URL: z.string(),
 })
 
-console.log(process.env)
 const _env = envSchema.safeParse(process.env)
 
 if (_env.success === false) {

@@ -2,15 +2,16 @@ import { PrismaClient } from '@prisma/client'
 import { execSync } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import type { Environment } from 'vitest/environments'
+import 'dotenv/config'
 
 const prisma = new PrismaClient()
 
 function generateDatabaseURL(schema: string) {
-    if (!process.env.VITE_DATABASE_URL) {
+    if (!process.env.DATABASE_URL) {
         throw new Error('Please provide a DATABASE_URL enviroment variable')
     }
 
-    const url = new URL(process.env.VITE_DATABASE_URL)
+    const url = new URL(process.env.DATABASE_URL)
 
     url.searchParams.set('schema', schema)
 
@@ -24,7 +25,7 @@ export default (<Environment>{
         const schema = randomUUID()
         const databaseURL = generateDatabaseURL(schema)
 
-        process.env.VITE_DATABASE_URL = databaseURL
+        process.env.DATABASE_URL = databaseURL
 
         execSync('npx prisma migrate deploy', { stdio: 'inherit' })
 
