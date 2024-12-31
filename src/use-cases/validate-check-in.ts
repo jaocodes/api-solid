@@ -29,6 +29,8 @@ export class ValidateCheckInUseCase {
 
         checkIn.validated_at = new Date()
 
+        await this.CheckInsRepository.save(checkIn)
+
         return { checkIn }
     }
 }
